@@ -43,14 +43,23 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
         {/* Logos */}
         <div className="poster-logos">
            <div className="logo-box">
-             <span>صندوق تنمية</span>
-             <span>الموارد البشرية</span>
-             <span className="logo-subtext uppercase">Human Resources Development Fund</span>
+             <span>منصة المستثمر</span>
            </div>
-           <div className="logo-box right">
-             <span>وزارة البيئة والمياه والزراعة</span>
-             <span className="logo-subtext">Ministry of Environment Water & Agriculture</span>
-           </div>
+           
+           {slide.brandLogo ? (
+             <div className="logo-box right">
+                <img 
+                  src={slide.brandLogo} 
+                  alt="Brand Logo" 
+                  style={{ height: '40px', width: 'auto', objectFit: 'contain' }}
+                  crossOrigin="anonymous" 
+                />
+             </div>
+           ) : (
+             <div className="logo-box right">
+                {/* Empty or previous logo if preferred - but user said replace */}
+             </div>
+           )}
         </div>
 
         {/* Title Overlay */}
@@ -173,6 +182,18 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
              <Coins size={22} style={{ color: themeColors.primary }} />
            </div>
         </div>
+      </div>
+
+      {/* Brand Stripe Footer (Added) */}
+      <div 
+        className="poster-brand-footer"
+        style={{ 
+          backgroundColor: themeColors.background === '#ffffff' ? '#f1f5f9' : 'rgba(255, 255, 255, 0.05)',
+          color: themeColors.text 
+        }}
+      >
+        <span className="left-brand">al_investor.com</span>
+        <span className="right-brand">منصة المستثمر</span>
       </div>
     </div>
   );

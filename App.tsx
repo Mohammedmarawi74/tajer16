@@ -12,6 +12,19 @@ import { IconsList } from './components/IconLibrary';
 import { generateSlideContent, generateHeaderImage } from './services/geminiService';
 import './index.css';
 
+// Brand Logos Import
+import logo1 from './logooo/logo-1.png';
+import logo2 from './logooo/logo-2.png';
+import logo3 from './logooo/logo-3.png';
+import logo4 from './logooo/logo-4.png';
+
+const BRAND_LOGOS = [
+  { id: '1', src: logo1 },
+  { id: '2', src: logo2 },
+  { id: '3', src: logo3 },
+  { id: '4', src: logo4 },
+];
+
 const PRESET_THEMES: { name: string; colors: ThemeColors }[] = [
   { 
     name: 'كحلي المستثمر', 
@@ -71,7 +84,8 @@ const INITIAL_SLIDE: CarouselSlide = {
     secondary: '#89C765',
     text: '#333333',
     background: '#ffffff'
-  }
+  },
+  brandLogo: logo1
 };
 
 type TabType = 'ai' | 'content' | 'design' | 'custom';
@@ -311,6 +325,29 @@ const App: React.FC = () => {
                     </div>
                   ))}
                 </div>
+              </div>
+
+              <div className="input-group">
+                <h3 className="input-label" style={{ textAlign: 'center', borderBottom: '1px solid var(--slate-800)', paddingBottom: '8px' }}>شعار الجهة (أعلى اليمين)</h3>
+                <div className="brand-logo-grid">
+                  {BRAND_LOGOS.map((logo) => (
+                    <div 
+                      key={logo.id} 
+                      className={`brand-logo-card ${currentSlide.brandLogo === logo.src ? 'active' : ''}`}
+                      onClick={() => updateSlide({ brandLogo: logo.src })}
+                    >
+                      <img src={logo.src} alt={`Logo ${logo.id}`} />
+                    </div>
+                  ))}
+                </div>
+                {currentSlide.brandLogo && (
+                  <button 
+                    className="remove-logo-btn" 
+                    onClick={() => updateSlide({ brandLogo: undefined })}
+                  >
+                    إزالة الشعار كلياً
+                  </button>
+                )}
               </div>
 
               <div className="input-group">

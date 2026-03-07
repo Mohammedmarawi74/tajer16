@@ -24,6 +24,7 @@ export interface CarouselSlide {
   qrCodeText: string;
   customCss?: string;
   themeColors: ThemeColors;
+  brandLogo?: string;
 }
 
 export interface CarouselState {
