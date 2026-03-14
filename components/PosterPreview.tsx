@@ -99,16 +99,16 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
         {/* Specializations Section */}
         <div className="poster-specs-section">
           <div className="poster-specs-header">
-             <div
-               className="poster-specs-divider"
-               style={{ backgroundColor: themeColors.secondary, opacity: 0.4 }}
-             ></div>
              <span
                className="poster-specs-badge"
                style={{ backgroundColor: themeColors.secondary }}
              >
                التخصصات المطلوبة:
              </span>
+             <div
+               className="poster-specs-divider"
+               style={{ backgroundColor: themeColors.secondary, opacity: 0.4 }}
+             ></div>
           </div>
 
           <div className="poster-specs-grid">
@@ -144,18 +144,6 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
           borderColor: 'rgba(0,0,0,0.06)'
         }}
       >
-        <div className="poster-qr-container">
-          <div
-            className="poster-qr-text"
-            style={{ color: themeColors.text, opacity: 0.75 }}
-          >
-            {slide.qrCodeText}
-          </div>
-          <div className="poster-qr-box">
-            <QrCode className="poster-qr-icon" style={{ color: themeColors.primary }} strokeWidth={1.2} />
-          </div>
-        </div>
-
         <div className="poster-details">
            <div className="poster-duration-row">
              <div className="poster-duration-box" style={{ color: themeColors.primary }}>
@@ -181,6 +169,27 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
              <Coins size={22} style={{ color: themeColors.primary }} />
            </div>
         </div>
+
+        <div className="poster-qr-container">
+          <div
+            className="poster-qr-text"
+            style={{ color: themeColors.text, opacity: 0.75 }}
+          >
+            {slide.qrCodeText}
+          </div>
+          <div className="poster-qr-box">
+            {slide.qrCodeImage ? (
+              <img 
+                src={slide.qrCodeImage} 
+                alt="QR Code" 
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                crossOrigin="anonymous"
+              />
+            ) : (
+              <QrCode className="poster-qr-icon" style={{ color: themeColors.primary }} strokeWidth={1.2} />
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Brand Stripe Footer */}
@@ -191,8 +200,8 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
           color: themeColors.text
         }}
       >
-        <span className="left-brand">al-tajer.com</span>
         <span className="right-brand" style={{ color: themeColors.primary }}>منصة التاجر</span>
+        <span className="left-brand">dtajer.com</span>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useState, useCallback, useRef } from 'react';
 import {
   Plus, Trash2, Download, Wand2, Image as ImageIcon,
   ChevronRight, ChevronLeft, Save, PlusCircle, LayoutPanelTop,
-  Type, Palette, Code2, Sparkles, Clock, Coins, UploadCloud, CheckCircle2, Loader2
+  Type, Palette, Code2, Sparkles, Clock, Coins, UploadCloud, CheckCircle2, Loader2, QrCode
 } from 'lucide-react';
 import * as htmlToImage from 'html-to-image';
 import { CarouselSlide, Specialization, ThemeColors } from './types';
@@ -175,7 +175,7 @@ const App: React.FC = () => {
     }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, field: 'topImage' | 'logoImage') => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, field: 'topImage' | 'logoImage' | 'qrCodeImage') => {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
@@ -351,8 +351,8 @@ const App: React.FC = () => {
               </div>
 
               <div className="input-group">
-                <label className="input-label">الخلفية والشعار</label>
-                <div className="upload-box-container">
+                <label className="input-label">الخلفية، الشعار ورمز QR</label>
+                <div className="upload-box-container" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
                   <label className="upload-box">
                     {currentSlide.topImage && <img src={currentSlide.topImage} alt="Cover" />}
                     <div className="overlay">
@@ -368,6 +368,14 @@ const App: React.FC = () => {
                       <span>إضافة لوغو</span>
                     </div>
                     <input type="file" style={{ display: 'none' }} accept="image/*" onChange={(e) => handleFileChange(e, 'logoImage')} />
+                  </label>
+                  <label className="upload-box">
+                    {currentSlide.qrCodeImage && <img src={currentSlide.qrCodeImage} alt="QR" style={{ objectFit: 'contain', padding: '8px', opacity: 0.5 }} />}
+                    <div className="overlay">
+                      <QrCode size={20} />
+                      <span>رفع رمز QR</span>
+                    </div>
+                    <input type="file" style={{ display: 'none' }} accept="image/*" onChange={(e) => handleFileChange(e, 'qrCodeImage')} />
                   </label>
                 </div>
               </div>
@@ -470,7 +478,7 @@ const App: React.FC = () => {
            </div>
         </div>
 
-        <p className="canvas-info">Cairo Font | 300 DPI Export Enabled | Al-Tajer Digital</p>
+        <p className="canvas-info">IBM Plex Sans Arabic | 300 DPI Export Enabled | Al-Tajer Digital</p>
       </main>
     </div>
   );

@@ -22,6 +22,7 @@ export interface CarouselSlide {
   duration: string;
   incentives: string;
   qrCodeText: string;
+  qrCodeImage?: string;
   customCss?: string;
   themeColors: ThemeColors;
   brandLogo?: string;

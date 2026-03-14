@@ -1,5 +1,4 @@
 /* index.css - Al-Tajer Digital Modern Design System */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&family=Almarai:wght@300;400;700;800&display=swap');
 
 :root {
     /* Al-Tajer Digital Color Palette */
@@ -52,7 +51,7 @@
     --radius-full: 9999px;
     
     /* Arabic Font Family */
-    --arabic-font: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
+    --arabic-font: 'IBM Plex Sans Arabic', 'Cairo', 'Tajawal', sans-serif;
 }
 
 * {
@@ -117,7 +116,7 @@ body {
 
 @media (min-width: 768px) {
     .app-container {
-        flex-direction: row-reverse;
+        flex-direction: row;
     }
 }
 
@@ -125,7 +124,7 @@ body {
 .sidebar-editor {
     width: 100%;
     background-color: var(--bg-white);
-    border-left: 1px solid var(--slate-200);
+    border-right: 1px solid var(--slate-200);
     height: 100vh;
     position: sticky;
     top: 0;
@@ -397,7 +396,7 @@ body {
 .theme-check {
     position: absolute;
     top: 10px;
-    left: 10px;
+    right: 10px;
     color: var(--primary-blue);
     background-color: var(--bg-white);
     border-radius: var(--radius-full);
@@ -815,9 +814,9 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: var(--r
 
 .floating-actions {
     position: absolute;
-    left: -90px;
+    right: -90px;
     top: 50%;
-    transform: translateY(-50%) translateX(40px);
+    transform: translateY(-50%) translateX(-40px);
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -1034,7 +1033,7 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: var(--r
 
 .user-logo-container {
     position: absolute;
-    left: 28px;
+    right: 28px;
     top: -26px;
     z-index: 20;
 }
@@ -1191,14 +1190,14 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: var(--r
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    text-align: left;
+    text-align: right;
     gap: 14px;
 }
 
 .poster-duration-row {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
 .poster-duration-box {
@@ -1229,6 +1228,7 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: var(--r
     border-width: 1px;
     border-style: solid;
     background-color: var(--bg-white);
+    transform: translateX(2px);
 }
 
 .poster-incentives-text {
@@ -1241,22 +1241,22 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: var(--r
 }
 
 .poster-brand-footer {
-    height: 32px;
+    height: 42px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 36px;
-    font-size: 10px;
-    font-weight: 700;
+    padding: 0 40px;
+    font-size: 13px;
+    font-weight: 800;
     transition: all 0.5s;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
-    background: linear-gradient(to right, var(--slate-50), var(--bg-white));
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    background: linear-gradient(to right, var(--slate-100), var(--bg-white));
 }
 
 .poster-brand-footer .left-brand {
     font-family: 'Inter', sans-serif;
     letter-spacing: 0.05em;
-    color: var(--text-muted);
+    color: var(--slate-600);
 }
 
 .poster-brand-footer .right-brand {
