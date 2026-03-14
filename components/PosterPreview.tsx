@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { CarouselSlide } from '../types';
 import { ICON_MAP } from './IconLibrary';
@@ -13,10 +12,10 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
   const { themeColors } = slide;
 
   return (
-    <div 
+    <div
       id={id}
       className="poster-preview font-arabic"
-      style={{ 
+      style={{
         backgroundColor: themeColors.background,
         color: themeColors.text
       }}
@@ -26,38 +25,38 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
 
       {/* Header with Background and Logos */}
       <div className="poster-header">
-        <img 
-          src={slide.topImage} 
-          alt="Top Header" 
+        <img
+          src={slide.topImage}
+          alt="Top Header"
           className="poster-image"
           crossOrigin="anonymous"
         />
-        <div 
+        <div
           className="poster-header-overlay"
-          style={{ 
-            background: `linear-gradient(to top, ${themeColors.primary} 95%, transparent 100%)`,
-            opacity: 0.95
+          style={{
+            background: `linear-gradient(to top, ${themeColors.primary}EE 85%, ${themeColors.primary}44 100%)`,
+            opacity: 1
           }}
         ></div>
-        
+
         {/* Logos */}
         <div className="poster-logos">
            <div className="logo-box">
-             <span>منصة المستثمر</span>
+             <span>منصة التاجر</span>
            </div>
-           
+
            {slide.brandLogo ? (
              <div className="logo-box right">
-                <img 
-                  src={slide.brandLogo} 
-                  alt="Brand Logo" 
-                  style={{ height: '40px', width: 'auto', objectFit: 'contain' }}
-                  crossOrigin="anonymous" 
+                <img
+                  src={slide.brandLogo}
+                  alt="Brand Logo"
+                  style={{ height: '42px', width: 'auto', objectFit: 'contain' }}
+                  crossOrigin="anonymous"
                 />
              </div>
            ) : (
              <div className="logo-box right">
-                {/* Empty or previous logo if preferred - but user said replace */}
+                {/* Empty or previous logo if preferred */}
              </div>
            )}
         </div>
@@ -76,9 +75,9 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
         {slide.logoImage && (
           <div className="user-logo-container">
              <div className="user-logo-box">
-               <img 
-                 src={slide.logoImage} 
-                 alt="User Logo" 
+               <img
+                 src={slide.logoImage}
+                 alt="User Logo"
                  className="user-logo-img"
                  crossOrigin="anonymous"
                />
@@ -87,11 +86,11 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
         )}
 
         {/* Description Text */}
-        <p 
+        <p
           className="poster-desc"
-          style={{ 
+          style={{
             borderColor: themeColors.secondary,
-            color: themeColors.text 
+            color: themeColors.text
           }}
         >
           {slide.description}
@@ -100,11 +99,11 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
         {/* Specializations Section */}
         <div className="poster-specs-section">
           <div className="poster-specs-header">
-             <div 
+             <div
                className="poster-specs-divider"
-               style={{ backgroundColor: themeColors.secondary }}
+               style={{ backgroundColor: themeColors.secondary, opacity: 0.4 }}
              ></div>
-             <span 
+             <span
                className="poster-specs-badge"
                style={{ backgroundColor: themeColors.secondary }}
              >
@@ -115,17 +114,17 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
           <div className="poster-specs-grid">
             {slide.specializations.map((spec) => (
               <div key={spec.id} className="poster-spec-item">
-                <div 
+                <div
                   className="poster-spec-icon-box"
-                  style={{ 
-                    backgroundColor: themeColors.background === '#ffffff' ? '#f9fafb' : 'rgba(255,255,255,0.05)',
-                    borderColor: 'rgba(0,0,0,0.05)',
+                  style={{
+                    backgroundColor: themeColors.background === '#FFFFFF' || themeColors.background === '#ffffff' ? '#F8FAFC' : 'rgba(255,255,255,0.08)',
+                    borderColor: `${themeColors.secondary}33`,
                     color: themeColors.primary
                   }}
                 >
                   {ICON_MAP[spec.icon] || ICON_MAP['other']}
                 </div>
-                <span 
+                <span
                   className="poster-spec-name"
                   style={{ color: themeColors.text }}
                 >
@@ -138,17 +137,17 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
       </div>
 
       {/* Footer Area */}
-      <div 
+      <div
         className="poster-footer"
-        style={{ 
-          backgroundColor: themeColors.background === '#ffffff' ? '#f9fafb' : 'rgba(0,0,0,0.1)',
-          borderColor: 'rgba(0,0,0,0.05)'
+        style={{
+          backgroundColor: themeColors.background === '#FFFFFF' || themeColors.background === '#ffffff' ? '#F8FAFC' : 'rgba(0,0,0,0.15)',
+          borderColor: 'rgba(0,0,0,0.06)'
         }}
       >
         <div className="poster-qr-container">
-          <div 
+          <div
             className="poster-qr-text"
-            style={{ color: themeColors.text, opacity: 0.8 }}
+            style={{ color: themeColors.text, opacity: 0.75 }}
           >
             {slide.qrCodeText}
           </div>
@@ -167,11 +166,11 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
                </div>
              </div>
            </div>
-           
-           <div 
+
+           <div
              className="poster-incentives-box"
-             style={{ 
-               backgroundColor: themeColors.background === '#ffffff' ? 'white' : 'rgba(255,255,255,0.05)',
+             style={{
+               backgroundColor: themeColors.background === '#FFFFFF' || themeColors.background === '#ffffff' ? '#FFFFFF' : 'rgba(255,255,255,0.08)',
                borderColor: `${themeColors.secondary}44`,
                color: themeColors.primary
              }}
@@ -184,16 +183,16 @@ const PosterPreview: React.FC<Props> = ({ slide, id }) => {
         </div>
       </div>
 
-      {/* Brand Stripe Footer (Added) */}
-      <div 
+      {/* Brand Stripe Footer */}
+      <div
         className="poster-brand-footer"
-        style={{ 
-          backgroundColor: themeColors.background === '#ffffff' ? '#f1f5f9' : 'rgba(255, 255, 255, 0.05)',
-          color: themeColors.text 
+        style={{
+          backgroundColor: themeColors.background === '#FFFFFF' || themeColors.background === '#ffffff' ? '#F1F5F9' : 'rgba(255, 255, 255, 0.05)',
+          color: themeColors.text
         }}
       >
-        <span className="left-brand">al_investor.com</span>
-        <span className="right-brand">منصة المستثمر</span>
+        <span className="left-brand">al-tajer.com</span>
+        <span className="right-brand" style={{ color: themeColors.primary }}>منصة التاجر</span>
       </div>
     </div>
   );

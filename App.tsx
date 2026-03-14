@@ -1,7 +1,6 @@
-
 import React, { useState, useCallback, useRef } from 'react';
-import { 
-  Plus, Trash2, Download, Wand2, Image as ImageIcon, 
+import {
+  Plus, Trash2, Download, Wand2, Image as ImageIcon,
   ChevronRight, ChevronLeft, Save, PlusCircle, LayoutPanelTop,
   Type, Palette, Code2, Sparkles, Clock, Coins, UploadCloud, CheckCircle2, Loader2
 } from 'lucide-react';
@@ -25,38 +24,39 @@ const BRAND_LOGOS = [
   { id: '4', src: logo4 },
 ];
 
+// Al-Tajer Digital Modern Theme Presets
 const PRESET_THEMES: { name: string; colors: ThemeColors }[] = [
-  { 
-    name: 'كحلي المستثمر', 
-    colors: { primary: '#0f172a', secondary: '#0ea5e9', text: '#1e293b', background: '#ffffff' } 
+  {
+    name: 'الأزرق الاحترافي',
+    colors: { primary: '#2563EB', secondary: '#3B82F6', text: '#0F172A', background: '#FFFFFF' }
   },
-  { 
-    name: 'الأحمر الصيفي', 
-    colors: { primary: '#ef4444', secondary: '#facc15', text: '#333333', background: '#fffbeb' } 
+  {
+    name: 'الكحلي الحديث',
+    colors: { primary: '#1E3A8A', secondary: '#3B82F6', text: '#1E293B', background: '#F8FAFC' }
   },
-  { 
-    name: 'فوشيا التحليل', 
-    colors: { primary: '#c026d3', secondary: '#3b82f6', text: '#1e1b4b', background: '#eff6ff' } 
+  {
+    name: 'النعناع المنعش',
+    colors: { primary: '#059669', secondary: '#10B981', text: '#0F172A', background: '#FFFFFF' }
   },
-  { 
-    name: 'سيان الابتكار', 
-    colors: { primary: '#0891b2', secondary: '#0f172a', text: '#0f172a', background: '#f0f9ff' } 
+  {
+    name: 'البنفسجي العميق',
+    colors: { primary: '#7C3AED', secondary: '#8B5CF6', text: '#1E1B4B', background: '#F5F3FF' }
   },
-  { 
-    name: 'لايم النمو', 
-    colors: { primary: '#65a30d', secondary: '#2563eb', text: '#1a2e05', background: '#f7fee7' } 
+  {
+    name: 'الأزرق السماوي',
+    colors: { primary: '#0891B2', secondary: '#06B6D4', text: '#164E63', background: '#ECFEFF' }
   },
-  { 
-    name: 'برتقالي الحركة', 
-    colors: { primary: '#f97316', secondary: '#fdba74', text: '#431407', background: '#fff7ed' } 
+  {
+    name: 'الرمادي الأنيق',
+    colors: { primary: '#475569', secondary: '#64748B', text: '#0F172A', background: '#FFFFFF' }
   },
-  { 
-    name: 'الوضع الداكن', 
-    colors: { primary: '#111827', secondary: '#2dd4bf', text: '#f9fafb', background: '#030712' } 
+  {
+    name: 'البرتقالي الحيوي',
+    colors: { primary: '#EA580C', secondary: '#F97316', text: '#431407', background: '#FFF7ED' }
   },
-  { 
-    name: 'بنفسجي العمق', 
-    colors: { primary: '#7c3aed', secondary: '#3b82f6', text: '#1e1b4b', background: '#f5f3ff' } 
+  {
+    name: 'الوضع الداكن',
+    colors: { primary: '#3B82F6', secondary: '#10B981', text: '#F1F5F9', background: '#1E293B' }
   }
 ];
 
@@ -80,10 +80,10 @@ const INITIAL_SLIDE: CarouselSlide = {
   qrCodeText: 'للتسجيل والاطلاع على كافة الشروط، يرجى مسح الرمز والتوجه لموقع صندوق التنمية',
   customCss: '',
   themeColors: {
-    primary: '#006C35',
-    secondary: '#89C765',
-    text: '#333333',
-    background: '#ffffff'
+    primary: '#2563EB',
+    secondary: '#3B82F6',
+    text: '#0F172A',
+    background: '#FFFFFF'
   },
   brandLogo: logo1
 };
@@ -97,7 +97,7 @@ const App: React.FC = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [aiPrompt, setAiPrompt] = useState('');
-  
+
   const currentSlide = slides[activeSlideIndex];
   const posterRef = useRef<HTMLDivElement>(null);
 
@@ -164,7 +164,7 @@ const App: React.FC = () => {
         cacheBust: true,
       });
       const link = document.createElement('a');
-      link.download = `career-poster-${Date.now()}.png`;
+      link.download = `al-tajer-carousel-${Date.now()}.png`;
       link.href = dataUrl;
       link.click();
     } catch (error) {
@@ -217,13 +217,13 @@ const App: React.FC = () => {
                 <label className="ai-label">
                   <Wand2 size={20} /> توليد المحتوى الذكي
                 </label>
-                <textarea 
-                  placeholder="اكتب موضوع الإعلان (مثلاً: مهندس مدني في نيوم)..." 
+                <textarea
+                  placeholder="اكتب موضوع الإعلان (مثلاً: مهندس مدني في نيوم)..."
                   className="ai-textarea"
                   value={aiPrompt}
                   onChange={(e) => setAiPrompt(e.target.value)}
                 />
-                <button 
+                <button
                   onClick={handleAiGenerate}
                   disabled={isGenerating}
                   className="ai-button"
@@ -238,7 +238,7 @@ const App: React.FC = () => {
             <div className="form-section animate-fade-in">
               <div className="input-group">
                 <label className="input-label">العنوان الرئيسي (36px)</label>
-                <textarea 
+                <textarea
                   className="form-textarea"
                   rows={2}
                   value={currentSlide.title}
@@ -248,7 +248,7 @@ const App: React.FC = () => {
 
               <div className="input-group">
                 <label className="input-label">الوصف الاحترافي (18px)</label>
-                <textarea 
+                <textarea
                   className="form-textarea"
                   rows={5}
                   value={currentSlide.description}
@@ -259,7 +259,7 @@ const App: React.FC = () => {
               <div className="input-grid">
                 <div className="input-group">
                   <label className="input-label">مدة التدريب</label>
-                  <input 
+                  <input
                     className="form-input"
                     value={currentSlide.duration}
                     onChange={(e) => updateSlide({ duration: e.target.value })}
@@ -267,7 +267,7 @@ const App: React.FC = () => {
                 </div>
                 <div className="input-group">
                   <label className="input-label">المزايا</label>
-                  <input 
+                  <input
                     className="form-input"
                     value={currentSlide.incentives}
                     onChange={(e) => updateSlide({ incentives: e.target.value })}
@@ -280,12 +280,12 @@ const App: React.FC = () => {
           {activeTab === 'design' && (
             <div className="form-section animate-fade-in">
               <div className="input-group">
-                <h3 className="input-label" style={{ textAlign: 'center', borderBottom: '1px solid var(--slate-800)', paddingBottom: '8px' }}>الثيمات الجاهزة</h3>
+                <h3 className="input-label" style={{ textAlign: 'center', borderBottom: '1px solid var(--slate-200)', paddingBottom: '12px', color: 'var(--text-headline)' }}>الثيمات الجاهزة</h3>
                 <div className="theme-grid">
                   {PRESET_THEMES.map((theme) => {
                     const isActive = JSON.stringify(currentSlide.themeColors) === JSON.stringify(theme.colors);
                     return (
-                      <button 
+                      <button
                         key={theme.name}
                         onClick={() => updateSlide({ themeColors: theme.colors })}
                         className={`theme-card ${isActive ? 'active' : ''}`}
@@ -309,15 +309,15 @@ const App: React.FC = () => {
               </div>
 
               <div className="input-group">
-                <h3 className="input-label" style={{ textAlign: 'center', borderBottom: '1px solid var(--slate-800)', paddingBottom: '8px' }}>تخصيص الألوان</h3>
+                <h3 className="input-label" style={{ textAlign: 'center', borderBottom: '1px solid var(--slate-200)', paddingBottom: '12px', color: 'var(--text-headline)' }}>تخصيص الألوان</h3>
                 <div className="color-grid">
                   {(['primary', 'secondary', 'text', 'background'] as const).map((key) => (
                     <div key={key} className="input-group">
                       <label className="input-label" style={{ textAlign: 'center' }}>{key === 'primary' ? 'الأساسي' : key === 'secondary' ? 'الثانوي' : key === 'text' ? 'النصوص' : 'الخلفية'}</label>
                       <div className="color-picker-wrapper">
-                         <input 
-                          type="color" 
-                          className="color-input" 
+                         <input
+                          type="color"
+                          className="color-input"
                           value={currentSlide.themeColors[key]}
                           onChange={(e) => updateColors({ [key]: e.target.value })}
                          />
@@ -328,11 +328,11 @@ const App: React.FC = () => {
               </div>
 
               <div className="input-group">
-                <h3 className="input-label" style={{ textAlign: 'center', borderBottom: '1px solid var(--slate-800)', paddingBottom: '8px' }}>شعار الجهة (أعلى اليمين)</h3>
+                <h3 className="input-label" style={{ textAlign: 'center', borderBottom: '1px solid var(--slate-200)', paddingBottom: '12px', color: 'var(--text-headline)' }}>شعار الجهة (أعلى اليمين)</h3>
                 <div className="brand-logo-grid">
                   {BRAND_LOGOS.map((logo) => (
-                    <div 
-                      key={logo.id} 
+                    <div
+                      key={logo.id}
                       className={`brand-logo-card ${currentSlide.brandLogo === logo.src ? 'active' : ''}`}
                       onClick={() => updateSlide({ brandLogo: logo.src })}
                     >
@@ -341,8 +341,8 @@ const App: React.FC = () => {
                   ))}
                 </div>
                 {currentSlide.brandLogo && (
-                  <button 
-                    className="remove-logo-btn" 
+                  <button
+                    className="remove-logo-btn"
                     onClick={() => updateSlide({ brandLogo: undefined })}
                   >
                     إزالة الشعار كلياً
@@ -408,7 +408,7 @@ const App: React.FC = () => {
             <div className="form-section animate-fade-in">
               <div className="input-group">
                 <label className="input-label">محرر الأنماط CSS المتقدم</label>
-                <textarea 
+                <textarea
                   className="custom-css-editor"
                   dir="ltr"
                   placeholder="/* Custom CSS overrides here */"
@@ -421,16 +421,16 @@ const App: React.FC = () => {
         </div>
 
         <div className="sidebar-footer">
-          <button 
+          <button
             disabled={isExporting}
-            className="export-button" 
+            className="export-button"
             onClick={handleExportPng}
           >
             {isExporting ? <Loader2 className="animate-spin" size={20} /> : <ImageIcon size={20} />}
             تصدير كصورة احترافية (PNG)
           </button>
-          <button 
-            className="pdf-button" 
+          <button
+            className="pdf-button"
             onClick={() => window.print()}
           >
             <Download size={14} /> حفظ كملف (PDF)
@@ -444,10 +444,10 @@ const App: React.FC = () => {
            <button disabled={activeSlideIndex === 0} onClick={() => setActiveSlideIndex(activeSlideIndex - 1)} className="pagination-nav-btn"><ChevronRight /></button>
            <div className="dots-container">
              {slides.map((_, i) => (
-               <div 
-                key={i} 
-                onClick={() => setActiveSlideIndex(i)} 
-                className={`dot-indicator ${i === activeSlideIndex ? 'active' : 'inactive'}`} 
+               <div
+                key={i}
+                onClick={() => setActiveSlideIndex(i)}
+                className={`dot-indicator ${i === activeSlideIndex ? 'active' : 'inactive'}`}
                />
              ))}
            </div>
@@ -456,21 +456,21 @@ const App: React.FC = () => {
         </div>
 
         <div className="poster-viewport animate-slide-up">
-           <div 
+           <div
              className="poster-glow"
              style={{ backgroundColor: currentSlide.themeColors.primary }}
            />
            <div id="poster-to-export" ref={posterRef}>
              <PosterPreview slide={currentSlide} />
            </div>
-           
+
            <div className="floating-actions">
              <button onClick={handleExportPng} className="action-btn export"><Download size={24}/></button>
              <button onClick={() => removeSlide(activeSlideIndex)} className="action-btn delete"><Trash2 size={24}/></button>
            </div>
         </div>
-        
-        <p className="canvas-info">IBM Plex Sans Arabic | 300 DPI Export Enabled</p>
+
+        <p className="canvas-info">Cairo Font | 300 DPI Export Enabled | Al-Tajer Digital</p>
       </main>
     </div>
   );
